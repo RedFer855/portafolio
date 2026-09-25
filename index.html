@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO(Fernando): cambia la descripción por una frase tuya -->
+    <meta name="description" content="Portafolio de Fernando Barahona: proyectos web con HTML, CSS y JavaScript." />
+    <title>Fernando Barahona | Portafolio</title>
+
+    <!-- Fuentes: Press Start 2P (pixel, solo títulos) + Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+    <!-- Estilos: del más general al más específico -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/companion.css" />
+
+    <!-- defer: el script se descarga en paralelo y se ejecuta cuando el HTML ya está listo -->
+    <script src="js/main.js" defer></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/companion.js" defer></script>
+    <script src="js/contactForm.js" defer></script>
+</head>
+
+<body>
+    <!-- Enlace para usuarios de teclado: salta directo al contenido -->
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header">
+        <a class="brand" href="#inicio">
+            <span class="brand__avatar" aria-hidden="true"></span>
+            <!-- TODO(Fernando): tu nombre corto -->
+            <span class="brand__name">Fernando.dev</span>
+        </a>
+
+        <button class="hmb-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-principal" class="site-nav" aria-label="Principal">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido">
+        <!-- ===== HERO ===== -->
+        <section id="inicio" class="hero" data-companion="inicio">
+            <div class="container hero__inner">
+                <figure class="hero__photo pixel-frame">
+                    <!-- TODO(Fernando): reemplaza por tu foto, ej. media/perfil.jpg (cuadrada, ~400x400) -->
+                    <img src="media/perfil-placeholder.svg" alt="Foto de perfil de Fernando Barahona" width="320" height="320" />
+                </figure>
+                <div class="hero__text">
+                    <p class="hero__hello">¡Hola, mundo! Soy</p>
+                    <!-- TODO(Fernando): tu nombre completo -->
+                    <h1 class="hero__title">Fernando Barahona</h1>
+                    <!-- TODO(Fernando): tu rol o carrera -->
+                    <p class="hero__role">Estudiante · Desarrollador Web Junior</p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
+                        <a class="btn btn--ghost" href="#contacto">Contactarme</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SOBRE MÍ ===== -->
+        <section id="sobre-mi" class="section" data-companion="sobre-mi">
+            <div class="container about">
+                <h2 class="section__title">Sobre mí</h2>
+                <div class="about__grid">
+                    <article class="about__bio">
+                        <!-- TODO(Fernando): escribe tu biografía (3–5 líneas): quién eres, qué estudias, qué te gusta construir -->
+                        <p>
+                            Soy estudiante de la Universidad Católica de Honduras (UNICAH) y me apasiona
+                            construir páginas web que sean claras, rápidas y agradables de usar.
+                        </p>
+                        <p>
+                            Me gusta aprender haciendo: cada proyecto es un nivel nuevo que desbloquea
+                            una habilidad. Actualmente practico HTML, CSS, JavaScript y Git.
+                        </p>
+                    </article>
+
+                    <aside class="about__skills" aria-labelledby="skills-title">
+                        <h3 id="skills-title">Habilidades</h3>
+                        <ul class="skills">
+                            <li class="skill"><span class="skill__icon skill__icon--html" aria-hidden="true"></span>HTML5</li>
+                            <li class="skill"><span class="skill__icon skill__icon--css" aria-hidden="true"></span>CSS3</li>
+                            <li class="skill"><span class="skill__icon skill__icon--js" aria-hidden="true"></span>JavaScript</li>
+                            <li class="skill"><span class="skill__icon skill__icon--git" aria-hidden="true"></span>Git y GitHub</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROYECTOS ===== -->
+        <section id="proyectos" class="section section--alt" data-companion="proyectos">
+            <div class="container">
+                <h2 class="section__title">Proyectos</h2>
+                <p class="section__lead">Algunos trabajos que he construido. Las tarjetas se generan con JavaScript.</p>
+                <!-- projects.js llena esta lista a partir de un arreglo de objetos -->
+                <ul class="projects" id="lista-proyectos"></ul>
+            </div>
+        </section>
+
+        <!-- ===== CONTACTO ===== -->
+        <section id="contacto" class="section" data-companion="contacto">
+            <div class="container contact">
+                <h2 class="section__title">Contacto</h2>
+                <div class="contact__grid">
+                    <div class="contact__info">
+                        <p>¿Tienes un proyecto o una pregunta? Escríbeme por cualquiera de estos medios:</p>
+                        <ul class="contact__links">
+                            <!-- TODO(Fernando): tu correo (en href y en el texto) -->
+                            <li><a href="mailto:tucorreo@ejemplo.com">✉ tucorreo@ejemplo.com</a></li>
+                            <li><a href="https://github.com/RedFer855" target="_blank" rel="noopener noreferrer">⌨ GitHub: RedFer855</a></li>
+                            <!-- TODO(Fernando): tu LinkedIn -->
+                            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- novalidate: desactiva la validación del navegador para usar la nuestra en JS -->
+                    <form class="contact-form pixel-frame" id="form-contacto" novalidate>
+                        <div class="field">
+                            <label for="txtNombre">Nombre</label>
+                            <input type="text" id="txtNombre" name="nombre" autocomplete="name" placeholder="Tu nombre" />
+                        </div>
+                        <div class="field">
+                            <label for="txtEmail">Correo electrónico</label>
+                            <input type="email" id="txtEmail" name="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" />
+                        </div>
+                        <div class="field">
+                            <label for="txtMensaje">Mensaje</label>
+                            <textarea id="txtMensaje" name="mensaje" rows="5" placeholder="Cuéntame en qué te puedo ayudar"></textarea>
+                        </div>
+                        <button class="btn btn--primary" type="submit">Enviar mensaje</button>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="anio-actual">2026</span> Fernando Barahona · Hecho con HTML, CSS y JavaScript</p>
+        <p><a href="https://github.com/RedFer855/portafolio" target="_blank" rel="noopener noreferrer">Ver código en GitHub</a></p>
+    </footer>
+
+    <!-- ===== PERSONAJE COMPAÑERO =====
+         companion.js dibuja el sprite dentro de .companion__sprite
+         y cambia el texto del globo según la sección visible. -->
+    <div class="companion" id="companion">
+        <p class="companion__bubble" id="companion-bubble" aria-live="polite">¡Hola! Soy Pixi, el guía de este portafolio.</p>
+        <button class="companion__sprite" id="companion-sprite" type="button" aria-label="Ocultar o mostrar el mensaje de Pixi"></button>
+    </div>
+</body>
+</html>

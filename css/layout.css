@@ -1,0 +1,247 @@
+/* =========================================================
+   layout.css — Estructura de la página
+   Mobile-first: primero el diseño para celular y luego
+   @media (min-width) para pantallas más grandes.
+   Breakpoints de clase: 720px (tablet) y 1025px (escritorio)
+   ========================================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline: auto;          /* centra horizontalmente */
+    padding-inline: var(--space-m);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    position: sticky;             /* se queda arriba al hacer scroll */
+    top: 0;
+    z-index: 50;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+    padding: var(--space-s) var(--space-m);
+    background-color: var(--color-dark);
+    color: #fff;
+    border-bottom: var(--px) solid var(--color-primary);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+}
+
+/* Mini avatar pixel hecho solo con CSS (un cuadro con box-shadow) */
+.brand__avatar {
+    width: 28px;
+    height: 28px;
+    background:
+        linear-gradient(var(--color-dark) 0 0) 7px 9px / 4px 4px no-repeat,   /* ojo izq */
+        linear-gradient(var(--color-dark) 0 0) 17px 9px / 4px 4px no-repeat,  /* ojo der */
+        linear-gradient(var(--color-dark) 0 0) 9px 18px / 10px 3px no-repeat, /* boca */
+        var(--color-accent);
+    box-shadow: 0 0 0 3px #fff;
+    image-rendering: pixelated;
+}
+
+/* Botón hamburguesa (idea de la clase de PW1, ahora es un <button> accesible) */
+.hmb-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    background: transparent;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+.hmb-button span {
+    display: block;
+    height: 4px;
+    background-color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Cuando el menú está abierto, las 3 barras forman una X */
+.hmb-button[aria-expanded="true"] span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hmb-button[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hmb-button[aria-expanded="true"] span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* En móvil el menú ocupa toda la fila y está oculto hasta que se abre */
+.site-nav {
+    display: none;
+    flex-basis: 100%;
+}
+
+.site-nav.is-open {
+    display: block;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: var(--space-s) 0 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: block;
+    padding: var(--space-s) var(--space-m);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.site-nav a:hover {
+    background-color: var(--color-primary);
+}
+
+@media (min-width: 720px) {
+    .hmb-button {
+        display: none;
+    }
+
+    .site-nav {
+        display: block;
+        flex-basis: auto;
+    }
+
+    .site-nav ul {
+        flex-direction: row;
+        padding: 0;
+    }
+}
+
+/* ---------- Secciones ---------- */
+.section {
+    padding-block: var(--space-xl);
+}
+
+.section--alt {
+    background-color: var(--color-surface-alt);
+}
+
+.section__title {
+    display: inline-block;
+    padding-bottom: var(--space-s);
+    border-bottom: var(--px) solid var(--color-accent);
+}
+
+.section__lead {
+    color: var(--color-muted);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    padding-block: var(--space-xl);
+    background:
+        /* patrón de cuadritos pixel muy suave */
+        linear-gradient(90deg, rgb(91 60 196 / 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(rgb(91 60 196 / 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        var(--color-bg);
+}
+
+.hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-l);
+    text-align: center;
+}
+
+.hero__photo {
+    width: min(260px, 70vw);
+    margin: 0;
+}
+
+.hero__photo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.hero__hello {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-s);
+}
+
+.hero__role {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+}
+
+@media (min-width: 720px) {
+    .hero__inner {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .hero__actions {
+        justify-content: flex-start;
+    }
+}
+
+/* ---------- Sobre mí ---------- */
+.about__grid {
+    display: grid;
+    gap: var(--space-l);
+}
+
+@media (min-width: 1025px) {
+    .about__grid {
+        grid-template-columns: 2fr 1fr; /* bio más ancha que habilidades */
+    }
+}
+
+/* ---------- Contacto ---------- */
+.contact__grid {
+    display: grid;
+    gap: var(--space-l);
+}
+
+@media (min-width: 1025px) {
+    .contact__grid {
+        grid-template-columns: 1fr 1.3fr;
+        align-items: start;
+    }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    padding: var(--space-l) var(--space-m);
+    /* espacio extra abajo para que Pixi no tape el texto */
+    padding-bottom: 7rem;
+    background-color: var(--color-dark);
+    color: #ddd;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin-bottom: var(--space-s);
+}
+
+.site-footer a {
+    color: var(--color-accent);
+}

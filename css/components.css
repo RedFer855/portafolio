@@ -1,0 +1,230 @@
+/* =========================================================
+   components.css — Piezas reutilizables
+   (marco pixel, botones, habilidades, tarjetas, formulario)
+   ========================================================= */
+
+/* ---------- Marco pixel ----------
+   Borde grueso + sombra dura (sin blur) = look 8-bit */
+.pixel-frame {
+    border: var(--px) solid var(--color-dark);
+    box-shadow: var(--pixel-shadow), calc(var(--px) * 2) calc(var(--px) * 2) 0 var(--color-primary);
+    background-color: var(--color-surface);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    border: 3px solid var(--color-dark);
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--pixel-shadow);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Al pasar el mouse el botón "se levanta"; al hacer clic "se hunde" */
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: calc(var(--px) + 2px) calc(var(--px) + 2px) 0 var(--color-dark);
+}
+
+.btn:active {
+    transform: translate(var(--px), var(--px));
+    box-shadow: none;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.btn--ghost {
+    background-color: var(--color-surface);
+    color: var(--color-dark);
+}
+
+/* ---------- Habilidades ---------- */
+.about__skills {
+    padding: var(--space-m);
+    border: 3px dashed var(--color-primary);
+}
+
+.skills {
+    display: grid;
+    gap: var(--space-s);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    font-weight: 600;
+}
+
+/* Icono pixel: cuadro de color con un "brillo" en la esquina */
+.skill__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background:
+        linear-gradient(#fff 0 0) 3px 3px / 5px 5px no-repeat,
+        var(--skill-color, var(--color-primary));
+    border: 2px solid var(--color-dark);
+}
+
+.skill__icon--html { --skill-color: #e34f26; }
+.skill__icon--css  { --skill-color: #2965f1; }
+.skill__icon--js   { --skill-color: #f7df1e; }
+.skill__icon--git  { --skill-color: #f05032; }
+
+/* ---------- Tarjetas de proyecto ---------- */
+.projects {
+    display: grid;
+    gap: var(--space-l);
+    margin: var(--space-l) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 720px) {
+    .projects {
+        /* tantas columnas como quepan, mínimo 300px cada una */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card__cover {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 2 / 1;
+    border-bottom: var(--px) solid var(--color-dark);
+    background-color: var(--cover-color, var(--color-primary));
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+    text-shadow: 3px 3px 0 var(--color-dark);
+}
+
+.project-card__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--space-m);
+}
+
+.project-card__desc {
+    flex: 1;
+    color: var(--color-muted);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0 0 var(--space-m);
+    padding: 0;
+    list-style: none;
+}
+
+.tag {
+    padding: 2px var(--space-s);
+    border: 2px solid var(--color-dark);
+    background-color: var(--color-surface-alt);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.project-card__links {
+    display: flex;
+    gap: var(--space-s);
+}
+
+/* ---------- Contacto ---------- */
+.contact__links {
+    display: grid;
+    gap: var(--space-s);
+    padding: 0;
+    list-style: none;
+}
+
+.contact__links a {
+    font-weight: 600;
+}
+
+.contact-form {
+    display: grid;
+    gap: var(--space-m);
+    padding: var(--space-l) var(--space-m);
+}
+
+.field {
+    display: grid;
+    gap: var(--space-xs);
+}
+
+.field label {
+    font-weight: 700;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 3px solid var(--color-dark);
+    font: inherit;
+    background-color: var(--color-bg);
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #fff;
+}
+
+/* Estado de error (misma idea que .error en la clase de PW1) */
+.field.error input,
+.field.error textarea {
+    border-color: var(--color-error);
+}
+
+.field__error {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.form-status {
+    margin: 0;
+    font-weight: 600;
+}
+
+.form-status.is-success {
+    color: var(--color-success);
+}

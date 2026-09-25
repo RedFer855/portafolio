@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="320" height="320" shape-rendering="crispEdges">
+  <!-- Placeholder pixel: reemplázalo por tu foto real (media/perfil.jpg) -->
+  <rect width="16" height="16" fill="#e9e4f5"/>
+  <rect x="5" y="3" width="6" height="6" fill="#b9aee0"/>
+  <rect x="3" y="10" width="10" height="6" fill="#b9aee0"/>
+  <rect x="6" y="5" width="1" height="1" fill="#5b3cc4"/>
+  <rect x="9" y="5" width="1" height="1" fill="#5b3cc4"/>
+  <rect x="6" y="7" width="4" height="1" fill="#5b3cc4"/>
+</svg>

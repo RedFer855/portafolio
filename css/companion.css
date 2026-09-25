@@ -1,0 +1,104 @@
+/* =========================================================
+   companion.css — Pixi, el personaje pixel que acompaña
+   El sprite lo dibuja companion.js como una cuadrícula
+   (CSS Grid) de <span>, un <span> por cada pixel.
+   ========================================================= */
+
+.companion {
+    position: fixed;              /* siempre visible en la esquina */
+    right: var(--space-m);
+    bottom: var(--space-m);
+    z-index: 40;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-s);
+    pointer-events: none;         /* el contenedor no bloquea clics... */
+}
+
+.companion__sprite,
+.companion__bubble {
+    pointer-events: auto;         /* ...pero Pixi y su globo sí */
+}
+
+/* ---------- Globo de texto ---------- */
+.companion__bubble {
+    position: relative;
+    max-width: 200px;
+    margin: 0 0 3.5rem;
+    padding: var(--space-s) var(--space-m);
+    border: 3px solid var(--color-dark);
+    background-color: var(--color-surface);
+    box-shadow: var(--pixel-shadow);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* "Colita" del globo apuntando a Pixi (un cuadrito rotado) */
+.companion__bubble::after {
+    content: "";
+    position: absolute;
+    right: -9px;
+    bottom: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-surface);
+    border-top: 3px solid var(--color-dark);
+    border-right: 3px solid var(--color-dark);
+    transform: rotate(45deg);
+}
+
+/* Clase que agrega JS al hacer clic en Pixi: el globo se esconde */
+.companion.is-quiet .companion__bubble {
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
+
+/* ---------- Sprite ---------- */
+.companion__sprite {
+    --pixel: 5px;                 /* tamaño de cada pixel del personaje */
+    display: grid;
+    /* --cols lo define companion.js según el ancho de la matriz */
+    grid-template-columns: repeat(var(--cols, 12), var(--pixel));
+    grid-auto-rows: var(--pixel);
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    image-rendering: pixelated;
+    animation: pixi-float 2.4s ease-in-out infinite;
+}
+
+.companion__sprite span {
+    width: var(--pixel);
+    height: var(--pixel);
+}
+
+/* Flotar suavemente arriba y abajo */
+@keyframes pixi-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* Saltito cuando cambia de frase (JS agrega .is-talking unos ms) */
+.companion.is-talking .companion__sprite {
+    animation: pixi-hop 0.4s steps(3) 1;
+}
+
+@keyframes pixi-hop {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+}
+
+@media (min-width: 1025px) {
+    .companion__sprite {
+        --pixel: 6px;
+    }
+
+    .companion__bubble {
+        max-width: 240px;
+        font-size: 0.85rem;
+    }
+}
