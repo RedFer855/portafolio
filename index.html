@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO(Fernando): cambia la descripción por una frase tuya -->
-    <meta name="description" content="Portafolio de Fernando Barahona: proyectos web con HTML, CSS y JavaScript." />
+    <meta name="description" content="Portafolio de Fernando Barahona, desarrollador de software en C#/.NET y Android que crea aplicaciones para resolver problemas de negocio." />
     <title>Fernando Barahona | Portafolio</title>
 
     <!-- Fuentes: Press Start 2P (pixel, solo títulos) + Inter (texto) -->
@@ -19,6 +18,7 @@
     <link rel="stylesheet" href="css/companion.css" />
 
     <!-- defer: el script se descarga en paralelo y se ejecuta cuando el HTML ya está listo -->
+    <script src="js/sounds.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/projects.js" defer></script>
     <script src="js/companion.js" defer></script>
@@ -35,6 +35,11 @@
             <!-- TODO(Fernando): tu nombre corto -->
             <span class="brand__name">Fernando.dev</span>
         </a>
+
+        <!-- Activa o silencia los sonidos pixel (sounds.js) -->
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true" aria-label="Silenciar sonidos">
+            <span aria-hidden="true">🔊</span>
+        </button>
 
         <button class="hmb-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
             <span></span>
@@ -57,15 +62,17 @@
         <section id="inicio" class="hero" data-companion="inicio">
             <div class="container hero__inner">
                 <figure class="hero__photo pixel-frame">
-                    <!-- TODO(Fernando): reemplaza por tu foto, ej. media/perfil.jpg (cuadrada, ~400x400) -->
-                    <img src="media/perfil-placeholder.svg" alt="Foto de perfil de Fernando Barahona" width="320" height="320" />
+                    <!-- picture: el navegador usa WebP (más liviano) y si no lo soporta, el JPG -->
+                    <picture>
+                        <source srcset="media/perfil.webp" type="image/webp" />
+                        <img src="media/perfil.jpg" alt="Foto de perfil de Fernando Barahona con saco azul marino y camisa blanca" width="600" height="600" />
+                    </picture>
                 </figure>
                 <div class="hero__text">
                     <p class="hero__hello">¡Hola, mundo! Soy</p>
                     <!-- TODO(Fernando): tu nombre completo -->
                     <h1 class="hero__title">Fernando Barahona</h1>
-                    <!-- TODO(Fernando): tu rol o carrera -->
-                    <p class="hero__role">Estudiante · Desarrollador Web Junior</p>
+                    <p class="hero__role">Desarrollador de software · C# / .NET · Android</p>
                     <div class="hero__actions">
                         <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
                         <a class="btn btn--ghost" href="#contacto">Contactarme</a>
@@ -80,24 +87,43 @@
                 <h2 class="section__title">Sobre mí</h2>
                 <div class="about__grid">
                     <article class="about__bio">
-                        <!-- TODO(Fernando): escribe tu biografía (3–5 líneas): quién eres, qué estudias, qué te gusta construir -->
                         <p>
-                            Soy estudiante de la Universidad Católica de Honduras (UNICAH) y me apasiona
-                            construir páginas web que sean claras, rápidas y agradables de usar.
+                            Soy estudiante de la Universidad Católica de Honduras (UNICAH) y desarrollador de software.
+                            Trabajo sobre todo con C# y .NET en aplicaciones de escritorio, y con Java en Android,
+                            casi siempre con Supabase como backend.
                         </p>
                         <p>
-                            Me gusta aprender haciendo: cada proyecto es un nivel nuevo que desbloquea
-                            una habilidad. Actualmente practico HTML, CSS, JavaScript y Git.
+                            Lo que más disfruto es crear aplicaciones que le sirvan de verdad a un negocio:
+                            entender cómo trabaja la gente, encontrar dónde se pierde tiempo o dinero y convertir eso
+                            en una herramienta que lo resuelva. El desarrollo web lo estoy aprendiendo ahora,
+                            y este portafolio es parte de ese camino.
                         </p>
+                        <p>
+                            Fuera del código tengo dos pasiones: la tierra y el entrenamiento.
+                            El huerto y el deporte me enseñan lo mismo que programar: constancia y paciencia.
+                        </p>
+
+                        <h3 class="about__subtitle">Fuera del código</h3>
+                        <ul class="hobbies">
+                            <li class="hobby"><span class="hobby__icon" aria-hidden="true">🌱</span>Plantas, jardinería y huertos</li>
+                            <li class="hobby"><span class="hobby__icon" aria-hidden="true">🏃</span>Atletismo</li>
+                            <li class="hobby"><span class="hobby__icon" aria-hidden="true">🤸</span>Calistenia y gimnasia</li>
+                        </ul>
                     </article>
 
                     <aside class="about__skills" aria-labelledby="skills-title">
                         <h3 id="skills-title">Habilidades</h3>
                         <ul class="skills">
+                            <li class="skill"><span class="skill__icon skill__icon--csharp" aria-hidden="true"></span>C# y .NET (WPF, WinForms)</li>
+                            <li class="skill"><span class="skill__icon skill__icon--java" aria-hidden="true"></span>Java (Android)</li>
+                            <li class="skill"><span class="skill__icon skill__icon--supabase" aria-hidden="true"></span>Supabase y PostgreSQL</li>
+                            <li class="skill"><span class="skill__icon skill__icon--git" aria-hidden="true"></span>Git y GitHub</li>
+                        </ul>
+                        <h3 class="about__subtitle">Aprendiendo</h3>
+                        <ul class="skills">
                             <li class="skill"><span class="skill__icon skill__icon--html" aria-hidden="true"></span>HTML5</li>
                             <li class="skill"><span class="skill__icon skill__icon--css" aria-hidden="true"></span>CSS3</li>
                             <li class="skill"><span class="skill__icon skill__icon--js" aria-hidden="true"></span>JavaScript</li>
-                            <li class="skill"><span class="skill__icon skill__icon--git" aria-hidden="true"></span>Git y GitHub</li>
                         </ul>
                     </aside>
                 </div>
@@ -108,7 +134,7 @@
         <section id="proyectos" class="section section--alt" data-companion="proyectos">
             <div class="container">
                 <h2 class="section__title">Proyectos</h2>
-                <p class="section__lead">Algunos trabajos que he construido. Las tarjetas se generan con JavaScript.</p>
+                <p class="section__lead">Sistemas reales que he construido de principio a fin, de escritorio y móviles.</p>
                 <!-- projects.js llena esta lista a partir de un arreglo de objetos -->
                 <ul class="projects" id="lista-proyectos"></ul>
             </div>
@@ -122,8 +148,7 @@
                     <div class="contact__info">
                         <p>¿Tienes un proyecto o una pregunta? Escríbeme por cualquiera de estos medios:</p>
                         <ul class="contact__links">
-                            <!-- TODO(Fernando): tu correo (en href y en el texto) -->
-                            <li><a href="mailto:tucorreo@ejemplo.com">✉ tucorreo@ejemplo.com</a></li>
+                            <li><a href="mailto:fbarahona280@gmail.com">✉ fbarahona280@gmail.com</a></li>
                             <li><a href="https://github.com/RedFer855" target="_blank" rel="noopener noreferrer">⌨ GitHub: RedFer855</a></li>
                             <!-- TODO(Fernando): tu LinkedIn -->
                             <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a></li>

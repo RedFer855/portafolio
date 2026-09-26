@@ -42,7 +42,7 @@
 
 .btn--ghost {
     background-color: var(--color-surface);
-    color: var(--color-dark);
+    color: var(--color-text);
 }
 
 /* ---------- Habilidades ---------- */
@@ -81,6 +81,39 @@
 .skill__icon--css  { --skill-color: #2965f1; }
 .skill__icon--js   { --skill-color: #f7df1e; }
 .skill__icon--git  { --skill-color: #f05032; }
+.skill__icon--csharp   { --skill-color: #9b4f96; }
+.skill__icon--java     { --skill-color: #e76f00; }
+.skill__icon--supabase { --skill-color: #3ecf8e; }
+
+.about__subtitle {
+    margin-top: var(--space-l);
+    color: var(--color-accent);
+}
+
+/* ---------- Pasatiempos ---------- */
+.hobbies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hobby {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    padding: var(--space-s) var(--space-m);
+    border: 3px solid var(--color-dark);
+    background-color: var(--color-surface);
+    box-shadow: var(--pixel-shadow);
+    font-weight: 600;
+}
+
+.hobby__icon {
+    font-size: 1.2rem;
+}
 
 /* ---------- Tarjetas de proyecto ---------- */
 .projects {
@@ -132,6 +165,13 @@
     flex-direction: column;
     flex: 1;
     padding: var(--space-m);
+}
+
+.project-card__rol {
+    margin-bottom: var(--space-s);
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
 }
 
 .project-card__desc {
@@ -194,7 +234,13 @@
     padding: 0.7rem;
     border: 3px solid var(--color-dark);
     font: inherit;
+    color: inherit;               /* los inputs no heredan el color de texto por defecto */
     background-color: var(--color-bg);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--color-muted);
 }
 
 .field textarea {
@@ -205,7 +251,7 @@
 .field textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-    background-color: #fff;
+    background-color: var(--color-surface-alt);
 }
 
 /* Estado de error (misma idea que .error en la clase de PW1) */

@@ -4,18 +4,22 @@
    ========================================================= */
 
 :root {
-    /* Paleta */
-    --color-bg: #f4f1ea;          /* fondo general (papel) */
-    --color-surface: #ffffff;     /* tarjetas y formularios */
-    --color-surface-alt: #e9e4f5; /* secciones alternas */
-    --color-text: #1f1b2e;        /* texto principal */
-    --color-muted: #5b5670;       /* texto secundario */
-    --color-primary: #5b3cc4;     /* acento principal (morado) */
-    --color-primary-dark: #3d2690;
+    /* Le dice al navegador que la página es oscura (scrollbars, inputs) */
+    color-scheme: dark;
+
+    /* Paleta morada oscura (estilo Visual Studio) */
+    --color-bg: #1e1433;          /* fondo general */
+    --color-surface: #2a1d47;     /* tarjetas y formularios */
+    --color-surface-alt: #251a3f; /* secciones alternas */
+    --color-text: #f1ecff;        /* texto principal */
+    --color-muted: #b9aee0;       /* texto secundario */
+    --color-primary: #7c4dff;     /* acento principal (fondo de botones) */
+    --color-primary-dark: #5a2fd6;
+    --color-link: #b69cff;        /* enlaces: más claro para leerse sobre el fondo oscuro */
     --color-accent: #f2a541;      /* acento secundario (naranja) */
-    --color-dark: #1f1b2e;        /* header / footer */
-    --color-error: #d7263d;
-    --color-success: #2a9d57;
+    --color-dark: #0d0819;        /* header, footer y bordes pixel */
+    --color-error: #ff6b7a;
+    --color-success: #4ade80;
 
     /* Tipografía */
     --font-pixel: "Press Start 2P", monospace;
@@ -71,7 +75,7 @@ img {
 }
 
 a {
-    color: var(--color-primary);
+    color: var(--color-link);
 }
 
 /* ---------- Tipografía ---------- */

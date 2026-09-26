@@ -1,26 +1,47 @@
 // projects.js — Genera las tarjetas de proyectos desde un arreglo
 // Para agregar un proyecto NO tocas el HTML: solo agregas un objeto aquí.
 
-// TODO(Fernando): completa los datos reales de cada proyecto.
-// - imagen: ruta a una captura (ej. "media/bimbo.jpg") o "" para usar la portada de color
-// - repo / demo: enlaces a GitHub y GitHub Pages ("" si todavía no hay)
+// TODO(Fernando): agrega capturas de cada proyecto.
+// - imagen: ruta a una captura (ej. "media/bimbo.webp") o "" para usar la portada de color
+// - repo / demo: enlaces ("" si no hay → no aparece el botón)
 const proyectos = [
     {
-        titulo: "Bimbo",
-        descripcion: "Página web inspirada en la marca Bimbo. (Escribe aquí de qué trata y qué aprendiste.)",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+        titulo: "Bimbo Honduras",
+        rol: "Desarrollador principal",
+        descripcion:
+            "Portal interno de gestión de planta: pesaje de materia prima, inventario, catálogos, " +
+            "reportes PDF/Excel, bitácora de auditoría y notificaciones en tiempo real. " +
+            "Arquitectura limpia (MVVM + CQRS) con permisos por rol y más de 600 pruebas unitarias.",
+        tecnologias: ["C#", ".NET", "WPF", "MVVM", "Supabase", "PostgreSQL"],
         imagen: "",
         color: "#1d4fa0",
         repo: "",
         demo: "",
     },
     {
-        titulo: "El Cairo",
-        descripcion: "Sitio web del proyecto El Cairo. (Escribe aquí de qué trata y qué aprendiste.)",
-        tecnologias: ["HTML", "CSS"],
+        titulo: "El Cairo POS",
+        rol: "Desarrollador principal",
+        descripcion:
+            "Sistema de punto de venta de escritorio: facturación con formato SAR Honduras exportada a PDF, " +
+            "carrito y buscador de productos, inventario por bodega, productos más vendidos " +
+            "y control de sesión por roles. Arquitectura en capas.",
+        tecnologias: ["C#", ".NET 8", "WinForms", "Supabase", "PostgreSQL"],
         imagen: "",
         color: "#c9772b",
-        repo: "",
+        repo: "https://github.com/RedFer855/ElCairo",
+        demo: "",
+    },
+    {
+        titulo: "Restaurante App",
+        rol: "Desarrollador principal · proyecto final",
+        descripcion:
+            "App Android para gestionar un restaurante: login, menú, pedidos y mesas. " +
+            "Base de datos local (Room) sincronizada con Supabase en tiempo real, " +
+            "arquitectura MVVM por capas y más de 400 pruebas.",
+        tecnologias: ["Java", "Android", "Room", "Supabase"],
+        imagen: "",
+        color: "#2a9d57",
+        repo: "https://github.com/RedFer855/ProyectoFinalRestaurante",
         demo: "",
     },
 ];
@@ -49,6 +70,14 @@ function crearTarjeta(proyecto) {
     const titulo = document.createElement("h3");
     titulo.textContent = proyecto.titulo; // textContent: seguro, no interpreta HTML
     body.appendChild(titulo);
+
+    // El rol es opcional: solo se muestra si el objeto lo trae
+    if (proyecto.rol) {
+        const rol = document.createElement("p");
+        rol.className = "project-card__rol";
+        rol.textContent = proyecto.rol;
+        body.appendChild(rol);
+    }
 
     const desc = document.createElement("p");
     desc.className = "project-card__desc";

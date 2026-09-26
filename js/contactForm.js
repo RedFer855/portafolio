@@ -3,8 +3,8 @@
 // en vez de repetir el mismo código por cada campo, definimos REGLAS
 // y una sola función las revisa todas.
 
-// TODO(Fernando): pon aquí tu correo real (el mismo de la sección Contacto)
-const CORREO_DESTINO = "tucorreo@ejemplo.com";
+// Correo que recibe los mensajes del formulario (el mismo de la sección Contacto)
+const CORREO_DESTINO = "fbarahona280@gmail.com";
 
 const isEmptyRegex = /^\s*$/;
 const isValidEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -32,8 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
         status.textContent = "";
         status.classList.remove("is-success");
 
-        if (!validarFormulario(form)) return;
+        if (!validarFormulario(form)) {
+            Sonidos.reproducir("error");
+            return;
+        }
 
+        Sonidos.reproducir("moneda");
         abrirCorreo(form);
         status.textContent = "¡Listo! Se abrirá tu app de correo para enviar el mensaje.";
         status.classList.add("is-success");
